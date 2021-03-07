@@ -1,0 +1,15 @@
+Main Features
+
+ - Model -> SQL
+ - SQL   -> Model
+ - Custom Mapping
+ - Relations -> One to One | One to Many | Many to Many
+ - Logging
+ - RawSql
+ - Functions, Views, Stored Procedures
+
+Other Features
+
+ - Global Filtering
+ - EF.Functions (by providers support)
+ - Loading Options -> Eager | Lazy

@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E8BDB991-92DA-475E-A5BB-1F18069BCDE8}"
+	ProjectSection(SolutionItems) = preProject
+		RoadMap.txt = RoadMap.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{BE74EE12-CE14-42EE-B516-CE27BAD657C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCoreTutorial.WebApi", "src\EFCoreTutorial.WebApi\EFCoreTutorial.WebApi.csproj", "{D0CAB119-8561-4F25-B561-E71849101C55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCoreTutorial.Data", "src\EFCoreTutorial.Data\EFCoreTutorial.Data.csproj", "{898357BF-A16A-4B41-BEF1-5C0949727238}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D0CAB119-8561-4F25-B561-E71849101C55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0CAB119-8561-4F25-B561-E71849101C55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0CAB119-8561-4F25-B561-E71849101C55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0CAB119-8561-4F25-B561-E71849101C55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{898357BF-A16A-4B41-BEF1-5C0949727238}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{898357BF-A16A-4B41-BEF1-5C0949727238}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{898357BF-A16A-4B41-BEF1-5C0949727238}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{898357BF-A16A-4B41-BEF1-5C0949727238}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D0CAB119-8561-4F25-B561-E71849101C55} = {E8BDB991-92DA-475E-A5BB-1F18069BCDE8}
+		{898357BF-A16A-4B41-BEF1-5C0949727238} = {E8BDB991-92DA-475E-A5BB-1F18069BCDE8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1732561B-E082-4CD3-9DDD-905BEA5A2F9F}
+	EndGlobalSection
+EndGlobal
