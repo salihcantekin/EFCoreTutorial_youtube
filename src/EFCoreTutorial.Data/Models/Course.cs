@@ -12,5 +12,7 @@ namespace EFCoreTutorial.Data.Models
 
 
         public bool IsActive { get; set; }
+
+        public virtual ICollection<Student> Students { get; set; }
     }
 }

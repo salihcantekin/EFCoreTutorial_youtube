@@ -4,14 +4,16 @@ using EFCoreTutorial.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EFCoreTutorial.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210317172705_studentAddressAdded")]
+    partial class studentAddressAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -19,44 +21,6 @@ namespace EFCoreTutorial.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.4")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("CourseStudent", b =>
-                {
-                    b.Property<int>("CoursesId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StudentsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CoursesId", "StudentsId");
-
-                    b.HasIndex("StudentsId");
-
-                    b.ToTable("CourseStudent");
-                });
-
-            modelBuilder.Entity("EFCoreTutorial.Data.Models.Book", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Author")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("StudentId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("StudentId");
-
-                    b.ToTable("Book");
-                });
 
             modelBuilder.Entity("EFCoreTutorial.Data.Models.Course", b =>
                 {
@@ -92,10 +56,6 @@ namespace EFCoreTutorial.Data.Migrations
                         .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AddressId")
-                        .HasColumnType("int")
-                        .HasColumnName("address_id");
-
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2")
                         .HasColumnName("birth_date");
@@ -115,9 +75,6 @@ namespace EFCoreTutorial.Data.Migrations
                         .HasColumnName("number");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AddressId")
-                        .IsUnique();
 
                     b.ToTable("students");
                 });
@@ -152,7 +109,14 @@ namespace EFCoreTutorial.Data.Migrations
                         .HasColumnType("nvarchar(1000)")
                         .HasColumnName("full_address");
 
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int")
+                        .HasColumnName("student_id");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("StudentId")
+                        .IsUnique();
 
                     b.ToTable("student_addresses");
                 });
@@ -186,53 +150,21 @@ namespace EFCoreTutorial.Data.Migrations
                     b.ToTable("teachers");
                 });
 
-            modelBuilder.Entity("CourseStudent", b =>
-                {
-                    b.HasOne("EFCoreTutorial.Data.Models.Course", null)
-                        .WithMany()
-                        .HasForeignKey("CoursesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("EFCoreTutorial.Data.Models.Student", null)
-                        .WithMany()
-                        .HasForeignKey("StudentsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("EFCoreTutorial.Data.Models.Book", b =>
-                {
-                    b.HasOne("EFCoreTutorial.Data.Models.Student", "Student")
-                        .WithMany("Books")
-                        .HasForeignKey("StudentId")
-                        .HasConstraintName("student_book_id_fk")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Student");
-                });
-
-            modelBuilder.Entity("EFCoreTutorial.Data.Models.Student", b =>
-                {
-                    b.HasOne("EFCoreTutorial.Data.Models.StudentAddress", "Address")
-                        .WithOne("Student")
-                        .HasForeignKey("EFCoreTutorial.Data.Models.Student", "AddressId")
-                        .HasConstraintName("student_address_student_id_fk")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Address");
-                });
-
-            modelBuilder.Entity("EFCoreTutorial.Data.Models.Student", b =>
-                {
-                    b.Navigation("Books");
-                });
-
             modelBuilder.Entity("EFCoreTutorial.Data.Models.StudentAddress", b =>
                 {
+                    b.HasOne("EFCoreTutorial.Data.Models.Student", "Student")
+                        .WithOne("Address")
+                        .HasForeignKey("EFCoreTutorial.Data.Models.StudentAddress", "StudentId")
+                        .HasConstraintName("student_address_id_fk")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("EFCoreTutorial.Data.Models.Student", b =>
+                {
+                    b.Navigation("Address");
                 });
 #pragma warning restore 612, 618
         }
