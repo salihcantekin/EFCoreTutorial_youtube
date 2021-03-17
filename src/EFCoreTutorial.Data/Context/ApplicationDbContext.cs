@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace EFCoreTutorial.Data.Context
@@ -16,6 +17,9 @@ namespace EFCoreTutorial.Data.Context
         {
         }
 
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Teacher> Teachers { get; set; }
+        public DbSet<Student> Students { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -57,7 +61,7 @@ namespace EFCoreTutorial.Data.Context
                 entity.ToTable("courses");
 
                 entity.Property(i => i.Id).HasColumnName("id").UseIdentityColumn();
-                entity.Property(i => i.Name).HasColumnName("first_name").HasColumnType("nvarchar").HasMaxLength(100);
+                entity.Property(i => i.Name).HasColumnName("name").HasColumnType("nvarchar").HasMaxLength(100);
                 entity.Property(i => i.IsActive).HasColumnName("is_active");
             });
 
