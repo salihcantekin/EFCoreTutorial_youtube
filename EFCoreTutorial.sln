@@ -10,9 +10,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E8BDB991-92D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{BE74EE12-CE14-42EE-B516-CE27BAD657C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCoreTutorial.WebApi", "src\EFCoreTutorial.WebApi\EFCoreTutorial.WebApi.csproj", "{D0CAB119-8561-4F25-B561-E71849101C55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCoreTutorial.WebApi", "src\EFCoreTutorial.WebApi\EFCoreTutorial.WebApi.csproj", "{D0CAB119-8561-4F25-B561-E71849101C55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCoreTutorial.Data", "src\EFCoreTutorial.Data\EFCoreTutorial.Data.csproj", "{898357BF-A16A-4B41-BEF1-5C0949727238}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCoreTutorial.Data", "src\EFCoreTutorial.Data\EFCoreTutorial.Data.csproj", "{898357BF-A16A-4B41-BEF1-5C0949727238}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCoreTutorail.Common", "src\EFCoreTutorail.Common\EFCoreTutorail.Common.csproj", "{51F11A69-E58B-46EF-90CA-70FA1F1870A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,6 +30,10 @@ Global
 		{898357BF-A16A-4B41-BEF1-5C0949727238}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{898357BF-A16A-4B41-BEF1-5C0949727238}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{898357BF-A16A-4B41-BEF1-5C0949727238}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51F11A69-E58B-46EF-90CA-70FA1F1870A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51F11A69-E58B-46EF-90CA-70FA1F1870A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51F11A69-E58B-46EF-90CA-70FA1F1870A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51F11A69-E58B-46EF-90CA-70FA1F1870A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

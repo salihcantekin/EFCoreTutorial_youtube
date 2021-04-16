@@ -1,4 +1,5 @@
-﻿using EFCoreTutorial.Data.Models;
+﻿using EFCoreTutorail.Common;
+using EFCoreTutorial.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -21,13 +22,15 @@ namespace EFCoreTutorial.Data.Context
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Student> Students { get; set; }
 
+        public DbSet<StudentAddress> StudentAddresses { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
                 // make the configurations
-                optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=efcore;Persist Security Info=True;User ID=sa;Password=Salih123!");
+                optionsBuilder.UseSqlServer(StringConstants.DbConnectionString);
             }
         }
 
@@ -76,7 +79,7 @@ namespace EFCoreTutorial.Data.Context
             {
                 entity.ToTable("student_addresses");
 
-                entity.Property(i => i.Id).HasColumnName("id").UseIdentityColumn();
+                entity.Property(i => i.Id).HasColumnName("id").UseIdentityColumn().ValueGeneratedOnAdd();
                 entity.Property(i => i.City).HasColumnName("city").HasMaxLength(50);
                 entity.Property(i => i.District).HasColumnName("district").HasMaxLength(100);
                 entity.Property(i => i.Country).HasColumnName("country").HasMaxLength(50);
