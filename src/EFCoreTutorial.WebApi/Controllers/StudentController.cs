@@ -25,9 +25,22 @@ namespace EFCoreTutorial.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var student = await applicationDbContext.Students.ToListAsync();
+            StudentFilter filter = new StudentFilter() { FirstName = "Salih" };
 
-            return Ok(student);
+            var students = applicationDbContext.Students.AsQueryable();
+
+            if (!String.IsNullOrEmpty(filter.FirstName))
+                students = students.Where(i => i.FirstName == filter.FirstName);
+
+            if (!String.IsNullOrEmpty(filter.LastName))
+                students = students.Where(i => i.LastName == filter.LastName);
+
+            if (filter.Number.HasValue)
+                students = students.Where(i => i.Number == filter.Number);
+
+            var list = students.Count();
+
+            return Ok();
         }
 
         [HttpPost]
@@ -68,7 +81,7 @@ namespace EFCoreTutorial.WebApi.Controllers
         public async Task<IActionResult> Update()
         {
             var student = await applicationDbContext.Students.FirstOrDefaultAsync();
-            
+
             student.FirstName = "SALİH";
             student.LastName = "CANTEKİN";
 

@@ -88,6 +88,7 @@ namespace EFCoreTutorial.Data.Context
                 entity.HasOne(i => i.Student)
                     .WithOne(i => i.Address)
                     .HasForeignKey<Student>(i => i.AddressId)
+                    .IsRequired(false)
                     .HasConstraintName("student_address_student_id_fk");
             });
 
