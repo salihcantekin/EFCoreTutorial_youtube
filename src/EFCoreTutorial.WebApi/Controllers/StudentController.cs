@@ -22,9 +22,34 @@ namespace EFCoreTutorial.WebApi.Controllers
         }
 
 
+        private async Task eagerLoadings()
+        {
+            var student = await applicationDbContext.Students
+                .Include(i => i.Books)
+                .FirstOrDefaultAsync(i => i.Id == 5);
+        }
+
+        private async Task lazyLoadings()
+        {
+            var students = await applicationDbContext.Students.ToListAsync();
+
+            foreach (var student in students)
+            {
+                foreach (var book in student.Books)
+                {
+                    Console.WriteLine(book.Name);
+                }
+            }
+
+        }
+
         [HttpGet]
         public async Task<IActionResult> Get()
         {
+            await lazyLoadings();
+            return null;
+
+
             StudentFilter filter = new StudentFilter() { FirstName = "Salih" };
 
             var students = applicationDbContext.Students.AsQueryable();

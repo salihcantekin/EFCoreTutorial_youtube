@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Proxies;
 
 namespace EFCoreTutorial.WebApi
 {
@@ -34,6 +35,7 @@ namespace EFCoreTutorial.WebApi
 
             services.AddDbContext<ApplicationDbContext>(conf => 
             {
+                conf.UseLazyLoadingProxies();
                 conf.UseSqlServer(StringConstants.DbConnectionString);
                 conf.EnableSensitiveDataLogging();
             });
