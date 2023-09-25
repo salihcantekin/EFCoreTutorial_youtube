@@ -24,9 +24,18 @@ namespace EFCoreTutorial.WebApi.Controllers
 
         private async Task eagerLoadings()
         {
-            var student = await applicationDbContext.Students
+            var aa = await applicationDbContext.Students
                 .Include(i => i.Books)
-                .FirstOrDefaultAsync(i => i.Id == 5);
+                .Select(i => new 
+                {
+                    Number = i.Number,
+                    BookName = i.Books.FirstOrDefault().Name
+                })
+                .ToListAsync();
+
+            //var student = await applicationDbContext.Students
+            //    .Include(i => i.Books)
+            //    .FirstOrDefaultAsync(i => i.Id == 5);
         }
 
         private async Task lazyLoadings()
@@ -46,7 +55,7 @@ namespace EFCoreTutorial.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            await lazyLoadings();
+            await eagerLoadings();
             return null;
 
 

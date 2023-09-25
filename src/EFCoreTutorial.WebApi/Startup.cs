@@ -31,13 +31,19 @@ namespace EFCoreTutorial.WebApi
         {
             services.AddControllers();
 
-            services.AddLogging();
+            services.AddLogging(conf => 
+            {
+                conf.AddConsole();
+                conf.AddDebug();
+            });
 
-            services.AddDbContext<ApplicationDbContext>(conf => 
+            services.AddDbContext<ApplicationDbContext>(conf =>
             {
                 conf.UseLazyLoadingProxies();
                 conf.UseSqlServer(StringConstants.DbConnectionString);
                 conf.EnableSensitiveDataLogging();
+                //conf.LogTo(Console.WriteLine);
+                //conf.UseLoggerFactory(services)
             });
         }
 
